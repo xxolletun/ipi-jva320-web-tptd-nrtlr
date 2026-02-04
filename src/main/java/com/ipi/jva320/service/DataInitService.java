@@ -4,6 +4,7 @@ import com.ipi.jva320.model.SalarieAideADomicile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
 
@@ -24,6 +25,16 @@ public class DataInitService implements CommandLineRunner {
 
         SalarieAideADomicile s1 = this.salarieAideADomicileService.creerSalarieAideADomicile(
                 new SalarieAideADomicile("Jean", LocalDate.parse("2022-12-05"), LocalDate.parse("2022-12-05"),
+                        20, 0,
+                        80, 10, 1));
+
+        SalarieAideADomicile s2 = this.salarieAideADomicileService.creerSalarieAideADomicile(
+                new SalarieAideADomicile("Bomane", LocalDate.of(2021, 7, 1), LocalDate.now(),
+                        0, 0,
+                        10, 1, 0));
+
+        SalarieAideADomicile s3 = this.salarieAideADomicileService.creerSalarieAideADomicile(
+                new SalarieAideADomicile("Cabri", LocalDate.parse("2022-12-05"), LocalDate.parse("2022-12-05"),
                         20, 0,
                         80, 10, 1));
     }

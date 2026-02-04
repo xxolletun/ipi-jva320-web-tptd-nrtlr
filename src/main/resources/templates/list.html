@@ -17,7 +17,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li><a href="http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC" class="nav-link">Liste des salariés <span class="badge badge-primary"></span></a></li>
+        <li><a href="http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC" class="nav-link">Liste des salariés <span class="badge badge-primary" th:text="${nbSalarie}"></span></a></li>
       </ul>
 
       <form class="form-inline my-2 my-lg-0" role="search" action="http://localhost:8080/salaries" method="GET">
@@ -47,16 +47,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Jeanne Dupond</td>
-          <td><a href="/salaries/aide/2" class="btn btn-primary ember-view">Détail</a></td>
+        <tr th:each="salarie : ${salaries}">
+          <th th:text="${salarie.id}" scope="row">1</th>
+          <td th:text="${salarie.nom}">Jeanne Dupond</td>
+          <td><a th:href="@{/salaries/{id}(id=${salarie.id})}" href="/salaries/aide/2" class="btn btn-primary ember-view">Détail</a></td>
         </tr>
+        <!--
         <tr>
           <th scope="row">2</th>
           <td>Robert Martin</td>
-          <td><a href="/salaries/aide/3" class="btn btn-primary ember-view">Détail</a></td>
-        </tr>
+          <td><a href="/salaries/aide/2" class="btn btn-primary ember-view">Détail</a></td>
+        </tr> -->
         </tbody>
       </table>
       <div class="row">
